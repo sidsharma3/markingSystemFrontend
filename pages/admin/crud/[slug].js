@@ -1,7 +1,13 @@
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
-import BlogUpdate from '../../../components/crud/BlogUpdate';
+import BlogUpdateAdmin from '../../../components/crud/BlogUpdateAdmin';
 import Link from 'next/link';
+import dynamic from "next/dynamic";
+
+const DynamicComponentWithNoSSR = dynamic(
+  () => import("../../../components/image-editor"),
+  { ssr: false }
+);
 
 const Blog = () => {
     return (
@@ -13,7 +19,8 @@ const Blog = () => {
                             <h2>Update blog</h2>
                         </div>
                         <div className="col-md-12">
-                            <BlogUpdate />
+                            <BlogUpdateAdmin />
+                            <DynamicComponentWithNoSSR />
                         </div>
                     </div>
                 </div>

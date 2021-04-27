@@ -31,6 +31,7 @@ const CreateBlog = ({ router }) => {
     const [checkedTag, setCheckedTag] = useState([]); // tags
 
     const [body, setBody] = useState(blogFromLS());
+    const [feedback, setFeedback] = useState(blogFromLS());
     const [values, setValues] = useState({
         error: '',
         sizeError: '',
@@ -79,8 +80,10 @@ const CreateBlog = ({ router }) => {
             } else {
                 setValues({ ...values, title: '', error: '', success: `A new blog titled "${data.title}" is created` });
                 setBody('');
+                setFeedback('');
                 setCategories([]);
                 setTags([]);
+                console.log(data);
             }
         });
     };
@@ -95,7 +98,9 @@ const CreateBlog = ({ router }) => {
     const handleBody = e => {
         // console.log(e);
         setBody(e);
+        setFeedback("");
         formData.set('body', e);
+        formData.set('feedback', " ");
         if (typeof window !== 'undefined') {
             localStorage.setItem('blog', JSON.stringify(e));
         }

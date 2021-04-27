@@ -12,7 +12,7 @@ import '../../node_modules/react-quill/dist/quill.snow.css';
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
 
-const BlogUpdate = ({ router }) => {
+const BlogUpdateAdmin = ({ router }) => {
     const [body, setBody] = useState('');
     const [feedback, setFeedback] = useState('');
 
@@ -249,7 +249,6 @@ const BlogUpdate = ({ router }) => {
                 <div className="form-group">
                     <label className="text-muted">Feedback</label>
                     <ReactQuill
-                        readOnly
                         modules={QuillModules}
                         formats={QuillFormats}
                         value={feedback || ''}
@@ -314,4 +313,4 @@ const BlogUpdate = ({ router }) => {
     );
 };
 
-export default withRouter(BlogUpdate);
+export default withRouter(BlogUpdateAdmin);
